@@ -28,8 +28,8 @@ class URLFixer
      */
     public function fixHomeURL($value)
     {
-        if (substr($value, -3) === '/wp') {
-            $value = substr($value, 0, -3);
+        if (substr($value, -10) === '/backstage') {
+            $value = substr($value, 0, -10);
         }
         return $value;
     }
@@ -42,8 +42,8 @@ class URLFixer
      */
     public function fixSiteURL($url)
     {
-        if (substr($url, -3) !== '/wp' && (is_main_site() || is_subdomain_install())) {
-            $url .= '/wp';
+        if (substr($url, -10) !== '/backstage' && (is_main_site() || is_subdomain_install())) {
+            $url .= '/backstage';
         }
         return $url;
     }
@@ -61,8 +61,8 @@ class URLFixer
         $path = ltrim($path, '/');
         $url = substr($url, 0, strlen($url) - strlen($path));
 
-        if (substr($url, -3) !== 'wp/') {
-            $url .= 'wp/';
+        if (substr($url, -10) !== 'backstage/') {
+            $url .= 'backstage/';
         }
 
         return $url . $path;
