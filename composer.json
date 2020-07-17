@@ -1,5 +1,5 @@
 {
-  "name": "roots/multisite-url-fixer",
+  "name": "ouun/ms-url-fixer",
   "type": "wordpress-muplugin",
   "license": "MIT",
   "description":
