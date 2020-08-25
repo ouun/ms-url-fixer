@@ -20,7 +20,8 @@ class URLFixer
      */
     public function wpInstallDir($prepend = '', $append = '')
     {
-        return $prepend . defined(WP_INSTALL_DIR) ? WP_INSTALL_DIR : 'wp' . $append;
+        $wp_dir = defined('WP_INSTALL_DIR') ? WP_INSTALL_DIR : 'wp';
+        return $prepend . $wp_dir . $append;
     }
 
     /**
@@ -44,7 +45,7 @@ class URLFixer
         $wp_path = self::wpInstallDir('/');
 
         if (substr($value, -strlen($wp_path)) === $wp_path) {
-            $value = substr($value, 0, -3);
+            $value = substr($value, 0, -strlen($wp_path));
         }
         return $value;
     }
